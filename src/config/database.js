@@ -9,7 +9,7 @@ const pgPool = new Pool({
     process.env.NODE_ENV === "production" && process.env.USE_SSL === "true"
       ? { rejectUnauthorized: false }
       : false,
-  max: 20,
+  max: 15,
   idleTimeoutMillis: 30000,
 });
 
