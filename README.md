@@ -139,7 +139,7 @@ Location: https://www.example.com/very/long/path/that/needs/shortening
 ### 5. Get URL Statistics
 Request:
 ```bash
-GET /api/stats/UXvqFkU
+GET /stats/UXvqFkU
 ```
 Response:
 ```bash
