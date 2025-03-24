@@ -1,6 +1,19 @@
 # URL Shortener Service
-- A robust, scalable URL shortening service built with Node.js, Express, PostgreSQL, and Redis.
-  
+- A robust, scalable URL shortening service built with Node.js, Express, PostgreSQL and redis.
+
+## Deployment
+- Backend deployed on Render.
+- PostgreSQL db deployed on Supabase.
+### 1. Deployed base url
+```bash
+https://giva-sxb7.onrender.com
+```
+### 2. Deployed PostgreSQL connection string
+You can test the API endpoints and overall application using my deployed database below:
+```bash
+postgresql://postgres.yxedaiiyubpfxnhftnws:tkWheHe9LT4LQhRC@aws-0-ap-south-1.pooler.supabase.com:5432/postgres
+```
+
 ## Brief Explanation of Approach
 - This URL shortener service is designed with scalability:
 ### 1. Architecture
@@ -62,6 +75,10 @@ npm start
 ### Base url
 ```bash
 http://localhost:3000
+```
+### Deployed base url
+```bash
+https://giva-sxb7.onrender.com
 ```
 ### 1. Shorten a URL
 Request:
