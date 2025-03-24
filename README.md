@@ -64,7 +64,10 @@ npm run dev
 ```
 #### For production with clustering: (Ignore it for now)
 ```bash
-NODE_ENV=production ENABLE_CLUSTER=true
+NODE_ENV=production
+ENABLE_CLUSTER=true
+```
+```bash
 npm start
 ```
 ### 6. Verify the installation:
