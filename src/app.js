@@ -3,8 +3,10 @@ const helmet = require("helmet");
 const cors = require("cors");
 const urlRoutes = require("./routes/urlRoutes");
 
+// Initialize express app
 const app = express();
 
+// Security middleware
 app.use(helmet());
 app.use(
   cors({
@@ -15,10 +17,12 @@ app.use(
   })
 );
 
+// Request parsing middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use((req, res, next) => {
+// Request logging middleware
+const requestLogger = (req, res, next) => {
   const start = Date.now();
   res.on("finish", () => {
     const duration = Date.now() - start;
@@ -27,22 +31,29 @@ app.use((req, res, next) => {
     );
   });
   next();
-});
+};
+app.use(requestLogger);
 
 // Health check endpoint
-app.get("/health", (req, res) => {
-  res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
-});
+const healthCheck = (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    timestamp: new Date().toISOString(),
+  });
+};
+app.get("/health", healthCheck);
 
-// Routes
+// Main routes
 app.use("/", urlRoutes);
 
-app.use((req, res) => {
+// 404 handler
+const notFoundHandler = (req, res) => {
   res.status(404).json({ error: "Not found" });
-});
+};
+app.use(notFoundHandler);
 
-// Error handler
-app.use((err, req, res, next) => {
+// Global error handler
+const errorHandler = (err, req, res, next) => {
   console.error(err.stack);
   const statusCode = err.statusCode || 500;
   res.status(statusCode).json({
@@ -51,6 +62,7 @@ app.use((err, req, res, next) => {
         ? "Internal server error"
         : err.message,
   });
-});
+};
+app.use(errorHandler);
 
 module.exports = app;
