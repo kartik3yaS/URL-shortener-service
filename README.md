@@ -9,7 +9,7 @@
 https://giva-sxb7.onrender.com
 ```
 ### 2. Deployed PostgreSQL connection string
-You can test the API endpoints and overall application using my deployed database conn string below:
+You can test the API endpoints and overall application using my deployed database conn string given below:
 ```bash
 postgresql://postgres.yxedaiiyubpfxnhftnws:tkWheHe9LT4LQhRC@aws-0-ap-south-1.pooler.supabase.com:5432/postgres
 ```
