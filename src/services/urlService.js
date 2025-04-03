@@ -63,7 +63,7 @@ class UrlService {
         return { shortCode: existingUrl.short_code, isCustomAlias: false };
       }
 
-      const shortCode = generateSecureShortCode();
+      const shortCode = await generateSecureShortCode();
 
       let expiresAt = null;
       if (expiresIn) {
